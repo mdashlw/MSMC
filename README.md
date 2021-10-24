@@ -1,31 +1,29 @@
-﻿# MSMC
-> A bare bones login library for Minecraft based projects to authenticate individuals with a Microsoft account.
+# MSMC
+<a href="https://discord.gg/3hM8H7nQMA"><img src="https://img.shields.io/discord/861839919655944213?logo=discord" alt="chat on Discord"/></a>
+<a href="https://github.com/Hanro50/MSMC/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/msmc" alt="MIT license"/></a>
+<a href="https://github.com/Hanro50/MSMC/"><img src="https://img.shields.io/npm/v/msmc" alt="Version Number"/></a>
+<a href="https://github.com/Hanro50/MSMC/"><img src="https://img.shields.io/github/stars/hanro50/msmc" alt="Github Stars"/></a>
 
-# Support
-<p>
-   <a href="https://discord.gg/3hM8H7nQMA">
-   <img src="https://img.shields.io/discord/861839919655944213?logo=discord"
-      alt="chat on Discord"></a>
-</p>
+<DL><DD>A bare bones login library for Minecraft based projects to authenticate individuals with a Microsoft account.</DL>	
 
-> At the momement you can get support via Discord (link above).
-
+# Support 
+<DL><DD>At the momement you can get support via <a href="https://discord.gg/3hM8H7nQMA">Discord</a>.</DL>
    
 # Supported gui frameworks
-> If you're using MSMC with one of the frameworks below. The behaviour each framework displays should be identical. 
+<DL><DD> If you're using MSMC with one of the frameworks below. The behaviour each framework displays should be identical. 
 Mainly each will generate a pop-up that can be used by the end user to login. In-line logins, where the main window of your app is redirected to allow a user to log in should be implemented manually. Check the wiki page for more information! {Coming soon!}
+</DL>
 
 ## "Raw"
-
-> This is not a framework as this method takes advantage off the chromium based web browsers a user will likely already have on their machine. 
+<DL><DD> This is not a framework as this method takes advantage off the chromium based web browsers a user will likely already have on their machine. 
 Windows already ships with one, Microsoft edge, and you're in full control of you launcher’s dependencies on Linux.
-
-> Chromium based web browser that are compatible with this method:
+</DL>
+<DL><DD> Chromium based web browser that are compatible with this method:
 Google Chrome, Microsoft Edge, Vivaldi, Blisk, Brave Browser, Yandex (Only Mac/Linux), Chromium (Linux only)
 No additional dependencies needed! 
+</DL>
 
 ### Example 
-
    ```js
 const msmc = require("msmc");
 const fetch = require("node-fetch");
@@ -48,14 +46,18 @@ msmc.fastLaunch("raw",
         console.log("We failed to log someone in because : "+reason);
     })
 ```
-###### 1) Raw was tested running under pure node 
-###### 2) Raw doesn't respect the "resizable" window property
+###### 1. Raw was tested running under pure node 
+###### 2. Raw doesn't respect the "resizable" window property
 ## NW.js
-> You should use the require method to load this module. Loading it by linking directly to the index.js file from the browser side of things may lead to unintended 
+<DL><DD> You should use the require method to load this module. Loading it by linking directly to the index.js file from the browser side of things may lead to unintended 
 errors and glitches our testing did not account for. 
+</DL>
+
 ### Example 
-> If you noticed that this and the raw gui framework has the same example bar the change of the word "raw" to "nwjs". That's more due to the new architecture in 2.2.0 allowing us to streamline documentation. 
-   ```js
+<DL><DD> If you noticed that this and the raw gui framework has the same example bar the change of the word "raw" to "nwjs". That's more due to the new architecture in 2.2.0 allowing us to streamline documentation. 
+   </DL>
+
+```js
 const msmc = require("msmc");
 const fetch = require("node-fetch");
 //msmc's testing enviroment sometimes runs into this issue that it can't load node fetch
@@ -78,11 +80,16 @@ msmc.fastLaunch("nwjs",
     })
 ```
 ## Electron
-> It is recommended to run the code for this library on the back-end side of electron. This is mainly due to security and the fast launch methods using functions and objects not available on the front end of electron. 
-> 
-> Do note that some frameworks that use electron as a base might not have these issues, but it is still something you should consider if you're having issues.
+<DL><DD> It is recommended to run the code for this library on the back-end side of electron. This is mainly due to security and the fast launch methods using functions and objects not available on the front end of electron. 
+ </DL>
+<DL><DD> Do note that some frameworks that use electron as a base might not have these issues, but it is still something you should consider if you're having issues.
+</DL>
+
 ### Example 
-> This is a code sample for electron should be added to your main.js file.
+
+<DL><DD> This is a code sample for electron should be added to your main.js file.
+</DL>
+
 ```js
 app.whenReady().then(() => {
   ...
@@ -107,11 +114,10 @@ app.whenReady().then(() => {
 ```
 
 # Examples
-
 ## MCLC example
 
-> A basic example of how to hook this library into <a href="https://github.com/Pierce01/MinecraftLauncher-core#readme">Mincraft Launcher core</a> to launch Minecraft
-
+<DL><DD> A basic example of how to hook this library into <a href="https://github.com/Pierce01/MinecraftLauncher-core#readme">Mincraft Launcher core</a> to launch Minecraft
+</DL>
 ```js
 const { Client, Authenticator } = require('minecraft-launcher-core');
 const launcher = new Client();
@@ -158,7 +164,9 @@ msmc.fastLaunch("raw",
 ```
 
 ## Pure Node Example:
-> This is the set-up you'd use if you where only using node or an incompatible gui framework. Like writing a terminal based minecraft launcher!
+<DL><DD> This is the set-up you'd use if you where only using node or an incompatible gui framework. Like writing a terminal based minecraft launcher!
+</DL>
+
 ```js
 const MSMC = require("msmc");
 MSMC.login({ client_id: "<token>" }, 
@@ -191,16 +199,18 @@ MSMC.login({ client_id: "<token>" },
 # Docs: Types
 
 ## prompt
-> Basically this is the prompt value in the request sent to Microsoft. This should only be important if you're using either the fastLaunch or Launch functions under either Electron or NW.js
+<DL><DD> Basically this is the prompt value in the request sent to Microsoft. This should only be important if you're using either the fastLaunch or Launch functions under either Electron or NW.js
+</DL>
 
 ###### For more information. Check out <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-authorization-code">Microsoft's support page</a>: 
 ```ts
 type prompt = "login" | "none" | "consent" | "select_account";
 ```
 
-
 ## mclcUser
-> A copy of the user object mclc uses
+<DL><DD> A copy of the user object mclc uses
+</DL>
+
 ```ts
 type mclcUser = {
     access_token: string;
@@ -211,14 +221,18 @@ type mclcUser = {
 }
 ```
 ## framework
-> A list of gui frameworks supported by this library.
+<DL><DD> A list of gui frameworks supported by this library.
+</DL>
+
 Used by the launch and fastLaunch functions to figure out what functions they should target.
 ```ts
 type framework = "electron" | "nwjs" | "raw";
 ```
 
 ## ts 
-> This is mostly used to aid translators. In theory one could create an add-on package that took in these codes and translated the given output accordingly.
+<DL><DD> This is mostly used to aid translators. In theory one could create an add-on package that took in these codes and translated the given output accordingly.
+</DL>
+
 ```ts
 export type ts =  "Login.Success.User" | "Login.Success.DemoUser" | "Login.Fail.Relog" | "Login.Fail.Xbox" | "Login.Fail.MC" | "Account.Unknown" | "Account.UserNotFound" | "Account.UserNotAdult" | "Cancelled.GUI" | "Cancelled.Back";
 ```
@@ -274,27 +288,26 @@ export type ts =  "Login.Success.User" | "Login.Success.DemoUser" | "Login.Fail.
 
 ## token
 
-> The Oauth2 details needed to log you in.
-
-### Resources
-> 
-> 1. https://docs.microsoft.com/en-us/graph/auth-register-app-v2
-> 2. https://docs.microsoft.com/en-us/graph/auth-v2-user#1-register-your-app
-> 3. https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps
+<DL><DD> The Oauth2 details needed to log you in.
+</DL>
+### Resources 
+1. https://docs.microsoft.com/en-us/graph/auth-register-app-v2
+2. https://docs.microsoft.com/en-us/graph/auth-v2-user#1-register-your-app
+3. https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps
 
 ### Recommendations:
-> 
-> 1. If all of this seems confusing. Use the <a href="#fastlaunch">fastLaunch</a> method. Since doing so will allow you to skip this mess!
->
-> 2. Use "Mobile and desktop applications" as your type setting and make sure to set it up to only use "Personal Microsoft accounts only". <b>You're not a university!</b>
-> 
-> 3. set the redirect to "http://localhost/...", With localhost specifically Microsoft does not check port numbers.
+1. If all of this seems confusing. Use the <a href="#fastlaunch">fastLaunch</a> method. Since doing so will allow you to skip this mess!
+
+2. Use "Mobile and desktop applications" as your type setting and make sure to set it up to only use "Personal Microsoft accounts only". <b>You're not a university!</b>
+
+3. set the redirect to "http://localhost/...", With localhost specifically Microsoft does not check port numbers.
    This means that http://localhost:1/... to http://localhost:65535/... are all the same redirect to MS. (http://localhost/... == http://localhost:80/... btw)
-> 
-> 4. If you set the redirect to, for example, "http://localhost/Rainbow/Puppy/Unicorns/hl3/confirmed" then the variable {redirect} needs to equal "Rainbow/Puppy/Unicorns/hl3/confirmed".
->
-> 5. Basically the redirect field is equal to your redirect URL you gave Microsoft without the "http://localhost/" part.
+
+4. If you set the redirect to, for example, "http://localhost/Rainbow/Puppy/Unicorns/hl3/confirmed" then the variable {redirect} needs to equal "Rainbow/Puppy/Unicorns/hl3/confirmed".
+
+5. Basically the redirect field is equal to your redirect URL you gave Microsoft without the "http://localhost/" part.
    Please keep this in mind or you'll get weird errors as a mismatch here will still work...sort of.
+
 ###### This library does not allow you to set the port manually, due to the extreme risk of unforeseen bugs popping up.
 ```ts
 interface token {
@@ -629,8 +642,7 @@ export declare function getCallback(): {
 
 
 # Final notes
-> This module is ES6 compatible. [This mostly affects typescript users]
+This module is ES6 compatible. [This mostly affects typescript users]
 # Credit
-> Based off the Oauth2 flow outline on <a href="https://wiki.vg/Microsoft_Authentication_Scheme"> this site</a>
+Based off the Oauth2 flow outline on <a href="https://wiki.vg/Microsoft_Authentication_Scheme"> this site</a>
 ###### Please report any type file bugs asap
-
